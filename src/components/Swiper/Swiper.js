@@ -13,7 +13,7 @@ import { Pagination } from "swiper";
 
 export default function Slider() {
   return (
-    <div className="container h-100vh">
+    <div className="h-100vh">
       <Swiper
         pagination={{
           dynamicBullets: true,
