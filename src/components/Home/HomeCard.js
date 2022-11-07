@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-const ServiceCard = ({ service }) => {
+const HomeCard = ({ service }) => {
   const { name, img, price, description } = service;
   return (
     <Col>
@@ -24,4 +24,4 @@ const ServiceCard = ({ service }) => {
   );
 };
 
-export default ServiceCard;
+export default HomeCard;

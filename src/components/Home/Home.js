@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Slider from "../Swiper/Swiper";
-import ServiceCard from "./ServiceCard";
+import ServiceCard from "./HomeCard";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-
+import { Link } from "react-router-dom";
 const Home = () => {
   const [services, setServices] = useState([]);
   console.log(services);
@@ -22,9 +22,9 @@ const Home = () => {
         ))}
       </Row>
       <div className="text-center mt-4">
-        <Button className="px-4" variant="primary">
-          See all
-        </Button>
+        <Link to="/services">
+          <Button variant="primary">See all</Button>
+        </Link>
       </div>
     </div>
   );
