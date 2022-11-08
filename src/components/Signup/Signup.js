@@ -10,7 +10,7 @@ const MySwal = withReactContent(Swal);
 
 const Signup = () => {
   const [btnChecked, setBtnChecked] = useState(false);
-  const { signUpUser, googleLogIn } = useContext(AuthContext);
+  const { signUpUser, googleLogIn, profileUpdate } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleCheck = (e) => {
     setBtnChecked(e.target.checked);
@@ -25,6 +25,9 @@ const Signup = () => {
     signUpUser(email, password)
       .then((res) => {
         if (res.user.uid) {
+          profileUpdate(res.user.photoURL)
+            .then(() => {})
+            .catch(() => {});
           Swal.fire({
             icon: "success",
             title: "Signup successful.",
@@ -59,7 +62,7 @@ const Signup = () => {
         });
       });
   };
-  
+
   return (
     <div
       className="container p-5 shadow my-5 rounded-4"
