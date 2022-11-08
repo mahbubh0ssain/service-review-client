@@ -4,6 +4,8 @@ import ServiceCard from "./HomeCard";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import LatestProjects from "../LatestProjects/LatestProjects";
+import GetInTouch from "../GetInTouch/GetInTouch";
 const Home = () => {
   const [services, setServices] = useState([]);
   console.log(services);
@@ -16,7 +18,7 @@ const Home = () => {
   return (
     <div className="my-5 container">
       <Slider></Slider>
-      <Row xs={1} md={2} lg={3} className="g-4 mt-4">
+      <Row sm={1} md={2} lg={3} className="g-4 mt-4">
         {services.map((service) => (
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}
@@ -26,6 +28,8 @@ const Home = () => {
           <Button variant="primary">See all</Button>
         </Link>
       </div>
+      <LatestProjects></LatestProjects>
+      <GetInTouch></GetInTouch>
     </div>
   );
 };
