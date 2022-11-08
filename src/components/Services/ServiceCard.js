@@ -3,8 +3,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-
-const HomeCard = ({ service }) => {
+const ServiceCard = ({ service }) => {
   const { name, img, price, description, _id } = service;
   return (
     <Col>
@@ -27,4 +26,4 @@ const HomeCard = ({ service }) => {
   );
 };
 
-export default HomeCard;
+export default ServiceCard;

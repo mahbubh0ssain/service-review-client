@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "../Swiper/Swiper";
-import ServiceCard from "./HomeCard";
+import HomeCard from "./HomeCard";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import LatestProjects from "../LatestProjects/LatestProjects";
 import GetInTouch from "../GetInTouch/GetInTouch";
 const Home = () => {
   const [services, setServices] = useState([]);
-  console.log(services);
+
   useEffect(() => {
     fetch("http://localhost:5000/service")
       .then((res) => res.json())
@@ -20,7 +20,7 @@ const Home = () => {
       <Slider></Slider>
       <Row sm={1} md={2} lg={3} className="g-4 mt-4">
         {services.map((service) => (
-          <ServiceCard key={service._id} service={service}></ServiceCard>
+          <HomeCard key={service._id} service={service}></HomeCard>
         ))}
       </Row>
       <div className="text-center mt-4">
