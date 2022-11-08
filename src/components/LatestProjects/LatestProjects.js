@@ -2,7 +2,7 @@ import React from "react";
 
 const LatestProjects = () => {
   return (
-    <div className="bg-info rounded-3 p-4 my-4">
+    <div className="bg-primary rounded-3 p-4 my-4">
       <div className="text-center text-white">
         <h3>Latest Projects</h3>
         <h6>Believe in quality not quantity.</h6>
