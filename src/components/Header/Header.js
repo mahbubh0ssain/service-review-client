@@ -42,8 +42,11 @@ const Header = () => {
                 <Link className="me-3 text-decoration-none text-black" to="">
                   My reviews
                 </Link>
-                <Link className="me-3 text-decoration-none text-black" to="">
-                  Add services
+                <Link
+                  className="me-3 text-decoration-none text-black"
+                  to="/add-service"
+                >
+                  Add Service
                 </Link>
 
                 <img

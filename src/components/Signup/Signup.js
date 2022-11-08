@@ -25,7 +25,8 @@ const Signup = () => {
     signUpUser(email, password)
       .then((res) => {
         if (res.user.uid) {
-          profileUpdate(res.user.photoURL)
+          console.log(res.user);
+          profileUpdate({ photoURL: res.user.photoURL })
             .then(() => {})
             .catch(() => {});
           Swal.fire({
