@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 const ReviewForm = ({ name, _id }) => {
   const { user } = useContext(AuthContext);
+  const [currentDate, setCurrentDate] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,17 +17,39 @@ const ReviewForm = ({ name, _id }) => {
     const name = user.displayName;
     const img = user.photoURL;
     const serviceId = _id;
-    const review = { reviewTxt, name, img, serviceId };
-    fetch("http://localhost:5000/reiews", {
+    const review = { reviewTxt, name, img, serviceId, currentDate };
+
+    fetch("http://localhost:5000/reviews", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(review),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data);
+        if (data.data.acknowledged) {
+          Swal.fire({
+            icon: "success",
+            title: "Review added successfully",
+          });
+          e.target.reset();
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Can not add review.",
+          });
+        }
       });
-    console.log(review);
+  };
+  const getCurrentDateString = () => {
+    const date = new Date().getDate(); //current date
+    const month = new Date().getMonth() + 1; //current month
+    const year = new Date().getFullYear(); //current year
+    const hours = new Date().getHours(); //current hours
+    const min = new Date().getMinutes(); //current minutes
+    const sec = new Date().getSeconds(); //current seconds
+    return (
+      hours + ":" + min + ":" + sec + "    " + date + "/" + month + "/" + year
+    );
   };
 
   return (
@@ -45,7 +71,12 @@ const ReviewForm = ({ name, _id }) => {
               placeholder="Write here..."
             />
           </Form.Group>
-          <Button as="input" type="submit" value="Submit Review" />
+          <Button
+            onClick={() => setCurrentDate(getCurrentDateString())}
+            as="input"
+            type="submit"
+            value="Submit Review"
+          />
         </Form>
       ) : (
         <h4 className="text-center my-5">

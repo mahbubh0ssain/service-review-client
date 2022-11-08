@@ -24,7 +24,7 @@ const ServiceandRivew = () => {
       </Card>
       <div>
         <ReviewForm name={name} _id={_id}></ReviewForm>
-        <Reviews></Reviews>
+        <Reviews _id={_id}></Reviews>
       </div>
     </div>
   );

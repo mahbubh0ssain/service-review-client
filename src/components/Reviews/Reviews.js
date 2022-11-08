@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-const Reviews = () => {
+const Reviews = ({ _id }) => {
+  const [refresh, setRefresh] = useState(false);
+  const [reviews, setReviews] = useState([]);
+
+  console.log(reviews);
+  
+  useEffect(() => {
+    fetch(`http://localhost:5000/reiews/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data.data);
+        setRefresh(!refresh);
+        console.log(data.data);
+      });
+  }, [refresh, _id]);
+
   return (
     <Card border="primary my-3">
       <Card.Header>
