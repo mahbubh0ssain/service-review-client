@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -31,9 +33,37 @@ const Header = () => {
             <Link className="me-3 text-decoration-none text-black" to="">
               About
             </Link>
-            <Link className="me-3 text-decoration-none text-black" to="/login">
-              Login
-            </Link>
+            {user?.email ? (
+              <>
+                <Link className="me-3 text-decoration-none text-black" to="">
+                  My reviews
+                </Link>
+                <Link className="me-3 text-decoration-none text-black" to="">
+                  Add services
+                </Link>
+
+                <img
+                  className="img-fluid"
+                  style={{ width: "28px" }}
+                  src=""
+                  alt=""
+                />
+                <div onClick={() => console.log("Clicked")}>
+                  <img
+                    className="img-fluid"
+                    style={{ width: "28px" }}
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_logOut-ltr.svg/2048px-OOjs_UI_icon_logOut-ltr.svg.png"
+                    alt=""
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <Link className="text-decoration-none text-black" to="/login">
+                  Login
+                </Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
