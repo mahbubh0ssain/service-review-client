@@ -4,18 +4,30 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
-const ReviewForm = ({ name }) => {
+const ReviewForm = ({ name, _id }) => {
   const { user } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const review = e.target.review.value;
-
+    const reviewTxt = e.target.review.value;
+    const name = user.displayName;
+    const img = user.photoURL;
+    const serviceId = _id;
+    const review = { reviewTxt, name, img, serviceId };
+    fetch("http://localhost:5000/reiews", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.data);
+      });
     console.log(review);
   };
 
   return (
     <>
-      {" "}
       {user ? (
         <Form
           style={{ "max-width": "768px" }}

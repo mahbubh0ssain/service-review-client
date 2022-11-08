@@ -7,7 +7,6 @@ import ReviewForm from "../ReviewForm/ReviewForm";
 const ServiceandRivew = () => {
   const { data } = useLoaderData();
   const { name, img, price, description, _id } = data;
-  console.log(data);
   return (
     <div className="container my-5">
       <Card>
@@ -24,7 +23,7 @@ const ServiceandRivew = () => {
         </Card.Body>
       </Card>
       <div>
-        <ReviewForm name={name}></ReviewForm>
+        <ReviewForm name={name} _id={_id}></ReviewForm>
         <Reviews></Reviews>
       </div>
     </div>

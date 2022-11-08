@@ -21,14 +21,16 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const displayName = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     signUpUser(email, password)
       .then((res) => {
         if (res.user.uid) {
           console.log(res.user);
-          profileUpdate({ photoURL: res.user.photoURL })
+          const photoURL = res.user.photoURL;
+          const profile = { displayName, photoURL };
+          profileUpdate(profile)
             .then(() => {})
             .catch(() => {});
           Swal.fire({
