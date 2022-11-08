@@ -15,12 +15,11 @@ const ServiceCard = ({ service }) => {
             <img style={{ height: "250px" }} src={img} alt="" />
           </PhotoView>
         </PhotoProvider>
-        {/* <Card.Img style={{ height: "250px" }} variant="top" src={img} /> */}
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
           <Card.Text>
-            {description.length > 100
+            {description?.length > 100
               ? description.slice(0, 100) + " ..."
               : description}
           </Card.Text>

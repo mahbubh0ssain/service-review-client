@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
+import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
+  useTitle("Services");
   const [services, setServices] = useState([]);
 
   useEffect(() => {

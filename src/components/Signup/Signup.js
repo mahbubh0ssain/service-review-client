@@ -5,10 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 
 const MySwal = withReactContent(Swal);
 
 const Signup = () => {
+  useTitle("Sign up");
   const [btnChecked, setBtnChecked] = useState(false);
   const { signUpUser, googleLogIn, profileUpdate } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -108,7 +110,7 @@ const Signup = () => {
           Submit
         </Button>
       </Form>
-      
+
       <p className="text-center my-2">
         Already have an account?
         <Link to="/login" className=" fw-bold ms-2">

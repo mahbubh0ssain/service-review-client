@@ -8,7 +8,6 @@ import LatestProjects from "../LatestProjects/LatestProjects";
 import GetInTouch from "../GetInTouch/GetInTouch";
 const Home = () => {
   const [services, setServices] = useState([]);
-  console.log(services);
 
   useEffect(() => {
     fetch("http://localhost:5000/service")

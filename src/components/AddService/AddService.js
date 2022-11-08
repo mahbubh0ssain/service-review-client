@@ -1,13 +1,41 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { useTitle } from "../../Hooks/UseTitle/UseTitle";
+
+const MySwal = withReactContent(Swal);
 
 const AddService = () => {
+  useTitle("Add Service");
   const [service, setService] = useState({});
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(service);
+    const form = e.target;
+    fetch("http://localhost:5000/add-service", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(service),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Successfully added.",
+          });
+          form.reset();
+          navigate("/services");
+        } else {
+          Swal.fire({
+            icon: "success",
+            title: "can not add new service..",
+          });
+        }
+      });
   };
 
   const handleChange = (e) => {
@@ -16,7 +44,6 @@ const AddService = () => {
     const newService = { ...service };
     newService[field] = value;
     setService(newService);
-
   };
 
   return (
