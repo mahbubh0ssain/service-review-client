@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userSignOut } = useContext(AuthContext);
+
+  const signOutUser = () => {
+    userSignOut();
+  };
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -43,12 +47,12 @@ const Header = () => {
                 </Link>
 
                 <img
-                  className="img-fluid"
+                  className="img-fluid me-3"
                   style={{ width: "28px" }}
                   src=""
                   alt=""
                 />
-                <div onClick={() => console.log("Clicked")}>
+                <div style={{ cursor: "pointer" }} onClick={signOutUser}>
                   <img
                     className="img-fluid"
                     style={{ width: "28px" }}

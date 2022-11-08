@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -10,8 +10,8 @@ const MySwal = withReactContent(Swal);
 
 const Signup = () => {
   const [btnChecked, setBtnChecked] = useState(false);
-  const { signUpUser } = useContext(AuthContext);
-
+  const { signUpUser, googleLogIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleCheck = (e) => {
     setBtnChecked(e.target.checked);
   };
@@ -29,8 +29,28 @@ const Signup = () => {
             icon: "success",
             title: "Signup successful.",
           });
+          navigate("/");
+          form.reset();
         }
-        console.log(res.user);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.message,
+        });
+      });
+  };
+
+  const loginGoogle = () => {
+    googleLogIn()
+      .then((res) => {
+        if (res.user.uid) {
+          Swal.fire({
+            icon: "success",
+            title: "Signup successful.",
+          });
+          navigate("/");
+        }
       })
       .catch((err) => {
         Swal.fire({
@@ -92,7 +112,11 @@ const Signup = () => {
       </p>
       <div className="mt-3 row row-cols-1 row-cols-md-1 row-cols-lg-2 mx-auto ">
         <div className=" mb-3">
-          <Button className="w-100" variant="outline-primary">
+          <Button
+            onClick={loginGoogle}
+            className="w-100"
+            variant="outline-primary"
+          >
             <img
               className="img-fluid me-2 "
               style={{ height: "30px", width: "30px" }}
