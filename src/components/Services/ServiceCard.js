@@ -3,12 +3,19 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 const ServiceCard = ({ service }) => {
   const { name, img, price, description, _id } = service;
   return (
     <Col>
       <Card>
-        <Card.Img style={{ height: "250px" }} variant="top" src={img} />
+        <PhotoProvider>
+          <PhotoView src={img}>
+            <img style={{ height: "250px" }} src={img} alt="" />
+          </PhotoView>
+        </PhotoProvider>
+        {/* <Card.Img style={{ height: "250px" }} variant="top" src={img} /> */}
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
