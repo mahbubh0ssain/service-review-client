@@ -8,6 +8,7 @@ import LatestProjects from "../LatestProjects/LatestProjects";
 import GetInTouch from "../GetInTouch/GetInTouch";
 const Home = () => {
   const [services, setServices] = useState([]);
+  console.log(services);
 
   useEffect(() => {
     fetch("http://localhost:5000/service")
@@ -18,7 +19,7 @@ const Home = () => {
   return (
     <div className="my-5 container">
       <Slider></Slider>
-      <Row sm={1} md={2} lg={3} className="g-4 mt-4">
+      <Row xs={1} sm={1} md={2} lg={3} className="g-4 mt-4">
         {services.map((service) => (
           <HomeCard key={service._id} service={service}></HomeCard>
         ))}
