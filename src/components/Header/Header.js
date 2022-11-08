@@ -31,11 +31,8 @@ const Header = () => {
             <Link className="me-3 text-decoration-none text-black" to="/">
               Home
             </Link>
-            <Link className="me-3 text-decoration-none text-black" to="">
+            <Link className="me-3 text-decoration-none text-black" to="/blogs">
               Blogs
-            </Link>
-            <Link className="me-3 text-decoration-none text-black" to="">
-              About
             </Link>
             {user?.email ? (
               <>
@@ -51,7 +48,7 @@ const Header = () => {
 
                 <img
                   className="img-fluid me-3 rounded-circle"
-                  style={{ width: "28px" }}
+                  style={{ width: "34px" }}
                   src={
                     user.photoURL
                       ? user.photoURL

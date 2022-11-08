@@ -5,9 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 
 const MySwal = withReactContent(Swal);
 const Login = () => {
+  useTitle("Login");
   const { loginUser, googleLogIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = (e) => {

@@ -3,8 +3,10 @@ import { useLoaderData } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Reviews from "../Reviews/Reviews";
 import ReviewForm from "../ReviewForm/ReviewForm";
+import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 
 const ServiceandRivew = () => {
+  useTitle("Services");
   const { data } = useLoaderData();
   const { name, img, price, description, _id } = data;
   return (

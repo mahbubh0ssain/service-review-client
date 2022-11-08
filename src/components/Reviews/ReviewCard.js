@@ -20,7 +20,10 @@ const ReviewCard = ({ review }) => {
           {name}
         </Card.Header>
         <Card.Body>
-          <Card.Text>{reviewTxt}</Card.Text>
+          <Card.Text>
+            <p className="fw-bold">Review added at: {currentDate}</p>
+            {reviewTxt}
+          </Card.Text>
         </Card.Body>
       </Card>
     </div>

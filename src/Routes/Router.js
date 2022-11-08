@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import Route404 from "../components/404/Route404";
 import AddService from "../components/AddService/AddService";
+import Blogs from "../components/Blogs/Blogs";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import ServiceandRivew from "../components/ServiceandRivew/ServiceandRivew";
@@ -38,6 +40,11 @@ export const router = createBrowserRouter([
         path: "/add-service",
         element: <AddService></AddService>,
       },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
     ],
   },
+  { path: "*", element: <Route404></Route404> },
 ]);
