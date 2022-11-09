@@ -26,6 +26,19 @@ const Signup = () => {
     const password = form.password.value;
     signUpUser(email, password)
       .then((res) => {
+        const email = res.user.email;
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              localStorage.setItem("token", data.data);
+            }
+          });
+
         if (res.user.uid) {
           console.log(res.user);
           const photoURL = res.user.photoURL;

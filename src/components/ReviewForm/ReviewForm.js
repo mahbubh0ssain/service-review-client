@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
-
 const ReviewForm = ({ name, _id }) => {
   const { user } = useContext(AuthContext);
   const [currentDate, setCurrentDate] = useState("");
@@ -53,12 +52,7 @@ const ReviewForm = ({ name, _id }) => {
     const date = new Date().getDate(); //current date
     const month = new Date().getMonth() + 1; //current month
     const year = new Date().getFullYear(); //current year
-    const hours = new Date().getHours(); //current hours
-    const min = new Date().getMinutes(); //current minutes
-    const sec = new Date().getSeconds(); //current seconds
-    return (
-      hours + ":" + min + ":" + sec + "    " + date + "/" + month + "/" + year
-    );
+    return date + "/" + month + "/" + year;
   };
 
   return (

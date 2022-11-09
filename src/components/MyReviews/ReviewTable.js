@@ -106,7 +106,6 @@ const ReviewTable = ({ review }) => {
         </Modal.Body>
       </Modal>
       <tr>
-        <td>1</td>
         <td className="fw-bold">{serviceName}</td>
         <td>
           {reviewTxt.length > 80 ? reviewTxt.slice(0, 80) + "..." : reviewTxt}

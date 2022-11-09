@@ -4,10 +4,8 @@ import Form from "react-bootstrap/Form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 
-const MySwal = withReactContent(Swal);
 const Login = () => {
   useTitle("Login");
   const { loginUser, googleLogIn, user } = useContext(AuthContext);
@@ -22,6 +20,18 @@ const Login = () => {
 
     loginUser(email, password)
       .then((res) => {
+        const email = res.user.email;
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              localStorage.setItem("token", data.data);
+            }
+          });
         if (res.user.uid) {
           Swal.fire({
             icon: "success",
@@ -41,6 +51,19 @@ const Login = () => {
   const loginGoogle = () => {
     googleLogIn()
       .then((res) => {
+        const email = res.user.email;
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              localStorage.setItem("token", data.data);
+            }
+          });
+
         if (res.user.uid) {
           Swal.fire({
             icon: "success",

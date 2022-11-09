@@ -8,7 +8,9 @@ const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [refresh, setRefresh] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/my-reviews?email=${user?.email}`)
+    fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
+      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -28,7 +30,6 @@ const MyReviews = () => {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>#</th>
                 <th>Service name</th>
                 <th>Review</th>
                 <th>Actions</th>
