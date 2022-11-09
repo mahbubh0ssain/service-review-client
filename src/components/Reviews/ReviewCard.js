@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 
 const ReviewCard = ({ review }) => {
   const { name, img, reviewTxt, currentDate } = review;
+  console.log(name, img, reviewTxt, currentDate);
   return (
     <div>
       <Card border="primary my-3">
@@ -15,8 +16,8 @@ const ReviewCard = ({ review }) => {
                 ? img
                 : "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-default-avatar-profile-icon-social-media-user-vector-portrait-176194876.jpg"
             }
-            alt=""
-          />{" "}
+            alt="User Img"
+          />
           {name}
         </Card.Header>
         <Card.Body>
