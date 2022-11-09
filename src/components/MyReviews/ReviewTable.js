@@ -11,17 +11,22 @@ const ReviewTable = ({ review }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedTxt = e.target.review.value;
-    fetch("http://localhost:5000/update", {
-      method: "POST",
+    const reviewTxt = e.target.review.value;
+    fetch(`http://localhost:5000/update/${_id}`, {
+      method: "PATCH",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ updatedTxt }),
+      body: JSON.stringify({ reviewTxt }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.data.acknowledged) {
+          Swal.fire({
+            icon: "error",
+            title: "Successfully updated.",
+          });
+          e.target.reset();
+        }
       });
-    console.log(updatedTxt);
   };
 
   const handleDelete = (_id) => {
