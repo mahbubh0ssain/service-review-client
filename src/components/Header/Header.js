@@ -36,7 +36,7 @@ const Header = () => {
             </Link>
             {user?.email ? (
               <>
-                <Link className="me-3 text-decoration-none text-black" to="">
+                <Link className="me-3 text-decoration-none text-black" to="/my-review">
                   My reviews
                 </Link>
                 <Link

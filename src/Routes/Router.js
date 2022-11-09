@@ -4,6 +4,7 @@ import AddService from "../components/AddService/AddService";
 import Blogs from "../components/Blogs/Blogs";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
+import MyReviews from "../components/MyReviews/MyReviews";
 import ServiceandRivew from "../components/ServiceandRivew/ServiceandRivew";
 import Services from "../components/Services/Services";
 import Signup from "../components/Signup/Signup";
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
+      },
+      {
+        path: "/my-review",
+        element: <MyReviews></MyReviews>,
       },
     ],
   },
