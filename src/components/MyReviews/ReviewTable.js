@@ -21,10 +21,15 @@ const ReviewTable = ({ review }) => {
       .then((data) => {
         if (data.data.acknowledged) {
           Swal.fire({
-            icon: "error",
+            icon: "success",
             title: "Successfully updated.",
           });
-          e.target.reset();
+          setShow(false);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Something went wrong",
+          });
         }
       });
   };
@@ -106,7 +111,7 @@ const ReviewTable = ({ review }) => {
         <td>
           {reviewTxt.length > 80 ? reviewTxt.slice(0, 80) + "..." : reviewTxt}
         </td>
-        <td className="d-flex justify-content-around px-3 align-items-center">
+        <td className="d-flex justify-content-center px-3 align-items-center">
           <Button
             onClick={() => setShow(true)}
             className="me-2 "

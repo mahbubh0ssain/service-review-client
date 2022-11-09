@@ -21,10 +21,7 @@ const MyReviews = () => {
   }, [user?.email, refresh]);
 
   return (
-    <div
-      style={{ "min-height": "26vh" }}
-      className="container my-5 position-relative"
-    >
+    <div style={{ "min-height": "26vh" }} className="container my-5">
       {reviews.length > 0 ? (
         <>
           <h4 className="text-center mb-3">My Reviews</h4>
@@ -45,14 +42,7 @@ const MyReviews = () => {
           </Table>
         </>
       ) : (
-        <h3
-          style={{
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50% -50%)",
-          }}
-          className="text-center position-absolute"
-        >
+        <h3 className="mb-0 d-flex align-items-center justify-content-center">
           No reviews were added yet.
         </h3>
       )}

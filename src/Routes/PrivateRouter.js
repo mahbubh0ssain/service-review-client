@@ -7,8 +7,8 @@ const PrivateRouter = ({ children }) => {
   const location = useLocation();
   if (loader) {
     return (
-      <div className="text-center mx-auto">
-        <RingLoader color="#36d7b7" speedMultiplier={2} />;
+      <div className=" container my-5 d-flex align-items-center justify-content-center">
+        <RingLoader color="#36d7b7" speedMultiplier={2} />
       </div>
     );
   }
