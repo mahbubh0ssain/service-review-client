@@ -52,7 +52,29 @@ const ReviewForm = ({ name, _id }) => {
     const date = new Date().getDate(); //current date
     const month = new Date().getMonth() + 1; //current month
     const year = new Date().getFullYear(); //current year
-    return date + "/" + month + "/" + year;
+    const hours = new Date().getHours(); //current hours
+    const min = new Date().getMinutes(); //current minutes
+
+    let amOrpm = "";
+    if (hours > 12 || hours === 12) {
+      amOrpm = "PM";
+    } else {
+      amOrpm = "AM";
+    }
+    return (
+      date +
+      "/" +
+      month +
+      "/" +
+      year +
+      "       " +
+      "at " +
+      hours +
+      ":" +
+      min +
+      "" +
+      amOrpm
+    );
   };
 
   return (
