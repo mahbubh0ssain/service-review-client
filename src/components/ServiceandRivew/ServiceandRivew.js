@@ -1,13 +1,15 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Reviews from "../Reviews/Reviews";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import { useTitle } from "../../Hooks/UseTitle/UseTitle";
+import { Button } from "react-bootstrap";
 
 const ServiceandRivew = () => {
   useTitle("Services");
   const { data } = useLoaderData();
+  const navigate = useNavigate();
   const { name, img, price, description, _id } = data;
   return (
     <div className="container my-5">
@@ -22,6 +24,9 @@ const ServiceandRivew = () => {
           <Card.Title>{name}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
           <Card.Text>{description}</Card.Text>
+          <Button onClick={() => navigate(-1)} variant="primary">
+            Back
+          </Button>
         </Card.Body>
       </Card>
       <div>

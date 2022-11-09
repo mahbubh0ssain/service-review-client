@@ -8,16 +8,26 @@ import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 
 const ReviewForm = ({ name, _id }) => {
+  console.log(name);
   const { user } = useContext(AuthContext);
   const [currentDate, setCurrentDate] = useState("");
+  console.log(user?.displayName);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const reviewTxt = e.target.review.value;
-    const name = user.displayName;
+    const userName = user.displayName;
     const img = user.photoURL;
     const serviceId = _id;
-    const review = { reviewTxt, name, img, serviceId, currentDate };
+    const serviceName = name;
+    const review = {
+      reviewTxt,
+      userName,
+      img,
+      serviceId,
+      serviceName,
+      currentDate,
+    };
 
     fetch("http://localhost:5000/reviews", {
       method: "POST",
