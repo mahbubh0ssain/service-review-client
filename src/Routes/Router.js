@@ -9,6 +9,7 @@ import ServiceandRivew from "../components/ServiceandRivew/ServiceandRivew";
 import Services from "../components/Services/Services";
 import Signup from "../components/Signup/Signup";
 import Main from "../layout/Main";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
   {
@@ -39,7 +40,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-service",
-        element: <AddService></AddService>,
+        element: (
+          <PrivateRouter>
+            <AddService></AddService>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/blogs",
@@ -47,7 +52,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/my-review",
-        element: <MyReviews></MyReviews>,
+        element: (
+          <PrivateRouter>
+            <MyReviews></MyReviews>
+          </PrivateRouter>
+        ),
       },
     ],
   },

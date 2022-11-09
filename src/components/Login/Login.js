@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -10,13 +10,16 @@ import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 const MySwal = withReactContent(Swal);
 const Login = () => {
   useTitle("Login");
-  const { loginUser, googleLogIn } = useContext(AuthContext);
+  const { loginUser, googleLogIn, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     loginUser(email, password)
       .then((res) => {
         if (res.user.uid) {
@@ -43,7 +46,6 @@ const Login = () => {
             icon: "success",
             title: "Signup successful.",
           });
-          navigate("/");
         }
       })
       .catch((err) => {
@@ -53,6 +55,12 @@ const Login = () => {
         });
       });
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user]);
 
   return (
     <div

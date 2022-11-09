@@ -86,16 +86,6 @@ const AddService = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label className="text-dark">Rating</Form.Label>
-              <Form.Control
-                name="ratings"
-                onBlur={handleChange}
-                type="text"
-                placeholder="5/5"
-              />
-            </Form.Group>
-
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
