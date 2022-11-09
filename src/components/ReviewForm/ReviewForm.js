@@ -4,20 +4,18 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-const MySwal = withReactContent(Swal);
+
 
 const ReviewForm = ({ name, _id }) => {
-
   const { user } = useContext(AuthContext);
   const [currentDate, setCurrentDate] = useState("");
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const reviewTxt = e.target.review.value;
-    const userName = user.displayName;
-    const userImg = user.photoURL;
+    const userName = user?.displayName;
+    const userImg = user?.photoURL;
+    const userEmail = user?.email;
     const serviceId = _id;
     const serviceName = name;
     const review = {
@@ -25,6 +23,7 @@ const ReviewForm = ({ name, _id }) => {
       userName,
       userImg,
       serviceId,
+      userEmail,
       serviceName,
       currentDate,
     };
