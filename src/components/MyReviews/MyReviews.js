@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Table from "react-bootstrap/Table";
 import ReviewTable from "./ReviewTable";
+import RingLoader from "react-spinners/RingLoader";
 
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
@@ -25,9 +26,16 @@ const MyReviews = () => {
       });
   }, [user?.email, refresh]);
 
+  if (refresh) {
+    <div className=" container my-5 d-flex align-items-center justify-content-center">
+      <RingLoader color="#36d7b7" speedMultiplier={2} />
+    </div>;
+  } else {
+  }
+
   return (
     <div style={{ "min-height": "26vh" }} className="container my-5">
-      {reviews.length > 0 ? (
+      {reviews.length ? (
         <>
           <h4 className="text-center mb-3">My Reviews</h4>
           <Table striped bordered hover>
@@ -46,9 +54,11 @@ const MyReviews = () => {
           </Table>
         </>
       ) : (
-        <h3 className="mb-0 d-flex align-items-center justify-content-center">
-          No reviews were added yet.
-        </h3>
+        <>
+          <h3 className="mb-0 d-flex align-items-center justify-content-center">
+            No reviews were added yet.
+          </h3>
+        </>
       )}
     </div>
   );

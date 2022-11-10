@@ -9,7 +9,7 @@ const ServiceCard = ({ service }) => {
   const { name, img, price, description, _id } = service;
   return (
     <Col>
-      <Card>
+      <Card className="h-100">
         <PhotoProvider>
           <PhotoView src={img}>
             <img style={{ height: "250px" }} src={img} alt="" />

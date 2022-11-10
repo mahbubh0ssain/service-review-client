@@ -2,28 +2,33 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 
 const ReviewCard = ({ review }) => {
-  const { name, img, reviewTxt, currentDate } = review;
-
+  const { userName, userImg, reviewTxt, currentDate } = review;
+  console.log(userName, userImg);
   return (
     <div>
       <Card border="primary my-3">
-        <Card.Header>
-          <img
-            style={{ width: "30px" }}
-            className="img-fluid rounded-circle"
-            src={
-              img
-                ? img
-                : "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-default-avatar-profile-icon-social-media-user-vector-portrait-176194876.jpg"
-            }
-            alt="User Img"
-          />
-          {name}
+        <Card.Header className="d-flex justify-content-between">
+          <div>
+            <img
+              style={{ width: "30px" }}
+              className="img-fluid rounded-circle me-2"
+              src={
+                userImg
+                  ? userImg
+                  : "https://i.ibb.co/dj97vpb/Profile-avatar-placeholder-large.png"
+              }
+              alt="User Img"
+            />
+            {userName}
+          </div>
+
+          <div>
+            <small>{currentDate}</small>
+          </div>
         </Card.Header>
         <Card.Body>
           <Card.Text>
-            <p>Review added at: {currentDate}</p>
-            {reviewTxt}
+            <p> {reviewTxt}</p>
           </Card.Text>
         </Card.Body>
       </Card>

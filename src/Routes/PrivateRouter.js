@@ -5,6 +5,7 @@ import RingLoader from "react-spinners/RingLoader";
 const PrivateRouter = ({ children }) => {
   const { user, loader } = useContext(AuthContext);
   const location = useLocation();
+
   if (loader) {
     return (
       <div className=" container my-5 d-flex align-items-center justify-content-center">

@@ -8,7 +8,7 @@ import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 
 const Login = () => {
   useTitle("Login");
-  const { loginUser, googleLogIn, user } = useContext(AuthContext);
+  const { loginUser, googleLogIn, user, githubLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -37,6 +37,7 @@ const Login = () => {
             icon: "success",
             title: "Signup successful.",
           });
+          navigate(from, { replace: true });
           form.reset();
         }
       })
@@ -79,11 +80,36 @@ const Login = () => {
       });
   };
 
-  useEffect(() => {
-    if (user) {
-      navigate(from, { replace: true });
-    }
-  }, [user]);
+  const loginGithub = () => {
+    githubLogin()
+      .then((res) => {
+        const email = res.user.email;
+        fetch("https://mr-plumber-server.vercel.app/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              localStorage.setItem("token", data.data);
+            }
+          });
+        if (res.user.uid) {
+          Swal.fire({
+            icon: "success",
+            title: "Signup successful.",
+          });
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.message,
+        });
+      });
+  };
 
   return (
     <div
@@ -136,7 +162,11 @@ const Login = () => {
           </Button>
         </div>
         <div className=" mb-3">
-          <Button className="w-100" variant="outline-secondary">
+          <Button
+            onClick={loginGithub}
+            className="w-100"
+            variant="outline-secondary"
+          >
             <img
               className="img-fluid me-2"
               style={{ height: "30px", width: "30px" }}

@@ -36,7 +36,10 @@ const Header = () => {
             </Link>
             {user?.email ? (
               <>
-                <Link className="me-3 text-decoration-none text-black" to="/my-review">
+                <Link
+                  className="me-3 text-decoration-none text-black"
+                  to="/my-review"
+                >
                   My reviews
                 </Link>
                 <Link
@@ -50,9 +53,9 @@ const Header = () => {
                   className="img-fluid me-3 rounded-circle"
                   style={{ width: "34px" }}
                   src={
-                    user.photoURL
-                      ? user.photoURL
-                      : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+                    user?.photoURL
+                      ? user?.photoURL
+                      : "https://i.ibb.co/dj97vpb/Profile-avatar-placeholder-large.png"
                   }
                   alt=""
                 />

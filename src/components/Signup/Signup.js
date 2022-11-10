@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -10,9 +10,12 @@ import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 const MySwal = withReactContent(Swal);
 
 const Signup = () => {
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   useTitle("Sign up");
   const [btnChecked, setBtnChecked] = useState(false);
-  const { signUpUser, googleLogIn, profileUpdate } = useContext(AuthContext);
+  const { signUpUser, googleLogIn, githubLogin, profileUpdate } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const handleCheck = (e) => {
     setBtnChecked(e.target.checked);
@@ -65,12 +68,54 @@ const Signup = () => {
   const loginGoogle = () => {
     googleLogIn()
       .then((res) => {
+        const email = res.user.email;
+        fetch("https://mr-plumber-server.vercel.app/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              localStorage.setItem("token", data.data);
+            }
+          });
         if (res.user.uid) {
           Swal.fire({
             icon: "success",
             title: "Signup successful.",
           });
-          navigate("/");
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.message,
+        });
+      });
+  };
+  const loginGithub = () => {
+    githubLogin()
+      .then((res) => {
+        const email = res.user.email;
+        fetch("https://mr-plumber-server.vercel.app/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              localStorage.setItem("token", data.data);
+            }
+          });
+        if (res.user.uid) {
+          Swal.fire({
+            icon: "success",
+            title: "Signup successful.",
+          });
+          navigate(from, { replace: true });
         }
       })
       .catch((err) => {
@@ -81,6 +126,7 @@ const Signup = () => {
       });
   };
 
+  
   return (
     <div
       className="container p-5 shadow my-5 rounded-4"
@@ -149,7 +195,11 @@ const Signup = () => {
           </Button>
         </div>
         <div className=" mb-3">
-          <Button className="w-100" variant="outline-secondary">
+          <Button
+            onClick={loginGithub}
+            className="w-100"
+            variant="outline-secondary"
+          >
             <img
               className="img-fluid me-2"
               style={{ height: "30px", width: "30px" }}

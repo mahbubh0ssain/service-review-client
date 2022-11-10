@@ -8,12 +8,14 @@ import {
   GoogleAuthProvider,
   updateProfile,
   signOut,
+  GithubAuthProvider,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -33,6 +35,11 @@ const AuthProvider = ({ children }) => {
     setLoader(true);
     return signInWithPopup(auth, googleProvider);
   };
+
+  const githubLogin = () => {
+    setLoader(true);
+    return signInWithPopup(auth, githubProvider);
+  };
   const userSignOut = () => {
     setLoader(true);
     return signOut(auth);
@@ -43,6 +50,7 @@ const AuthProvider = ({ children }) => {
       photoURL: profile.photoURL,
     });
   };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -59,6 +67,7 @@ const AuthProvider = ({ children }) => {
     googleLogIn,
     userSignOut,
     profileUpdate,
+    githubLogin,
   };
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { useTitle } from "../../Hooks/UseTitle/UseTitle";
 import ServiceCard from "./ServiceCard";
+import RingLoader from "react-spinners/RingLoader";
 
 const Services = () => {
   useTitle("Services");
@@ -13,6 +14,13 @@ const Services = () => {
       .then((data) => setServices(data.data));
   }, []);
 
+  if (services.length === 0) {
+    return (
+      <div className=" container my-5 d-flex align-items-center justify-content-center">
+        <RingLoader color="#36d7b7" speedMultiplier={2} />
+      </div>
+    );
+  }
   return (
     <div className="my-5 container">
       <Row sm={1} md={2} lg={3} className="g-4 mt-4">
