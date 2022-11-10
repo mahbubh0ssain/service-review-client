@@ -12,7 +12,7 @@ const ReviewTable = ({ review }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const reviewTxt = e.target.review.value;
-    fetch(`http://localhost:5000/update/${_id}`, {
+    fetch(`https://mr-plumber-server.vercel.app/update/${_id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ reviewTxt }),
@@ -54,7 +54,7 @@ const ReviewTable = ({ review }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/delete/${_id}`, {
+          fetch(`https://mr-plumber-server.vercel.app/delete/${_id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

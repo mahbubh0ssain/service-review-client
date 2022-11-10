@@ -21,7 +21,7 @@ const Login = () => {
     loginUser(email, password)
       .then((res) => {
         const email = res.user.email;
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://mr-plumber-server.vercel.app/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),
@@ -52,7 +52,7 @@ const Login = () => {
     googleLogIn()
       .then((res) => {
         const email = res.user.email;
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://mr-plumber-server.vercel.app/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),

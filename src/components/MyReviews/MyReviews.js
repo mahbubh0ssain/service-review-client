@@ -8,9 +8,12 @@ const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [refresh, setRefresh] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
-      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
+    fetch(
+      `https://mr-plumber-server.vercel.app/my-reviews?email=${user?.email}`,
+      {
+        headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

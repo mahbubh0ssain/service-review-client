@@ -3,10 +3,7 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import { useTitle } from "../../Hooks/UseTitle/UseTitle";
-
-const MySwal = withReactContent(Swal);
 
 const AddService = () => {
   useTitle("Add Service");
@@ -15,7 +12,7 @@ const AddService = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    fetch("http://localhost:5000/add-service", {
+    fetch("https://mr-plumber-server.vercel.app/add-service", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(service),

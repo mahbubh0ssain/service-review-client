@@ -27,7 +27,9 @@ export const router = createBrowserRouter([
       {
         path: "/services/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/all-service/${params.id}`),
+          fetch(
+            `https://mr-plumber-server.vercel.app/all-service/${params.id}`
+          ),
         element: <ServiceandRivew></ServiceandRivew>,
       },
       {

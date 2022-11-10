@@ -27,7 +27,7 @@ const Signup = () => {
     signUpUser(email, password)
       .then((res) => {
         const email = res.user.email;
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://mr-plumber-server.vercel.app/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),
