@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 
 const ReviewCard = ({ review }) => {
   const { userName, userImg, reviewTxt, currentDate } = review;
-  console.log(userName, userImg);
   return (
     <div>
       <Card border="primary my-3">

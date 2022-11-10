@@ -4,10 +4,7 @@ import Form from "react-bootstrap/Form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import { useTitle } from "../../Hooks/UseTitle/UseTitle";
-
-const MySwal = withReactContent(Swal);
 
 const Signup = () => {
   const location = useLocation();
@@ -43,7 +40,6 @@ const Signup = () => {
           });
 
         if (res.user.uid) {
-          console.log(res.user);
           const photoURL = res.user.photoURL;
           const profile = { displayName, photoURL };
           profileUpdate(profile)

@@ -8,7 +8,6 @@ import "react-photo-view/dist/react-photo-view.css";
 
 const HomeCard = ({ service }) => {
   const { title, img, price, description, _id } = service;
-  console.log(service);
   return (
     <Col>
       <Card>
