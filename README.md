@@ -16,6 +16,7 @@ This is a personal website for a plumber [Mr. Plumber](https://mr-plumber-ee158.
 - firebase
 - React router
 - NodeJS
+- JWT (JSOn Web Token)
 - ExpressJS
 - MongoDB
 - Sweetalert2 for awesome alert (confirmation, deletion) and
