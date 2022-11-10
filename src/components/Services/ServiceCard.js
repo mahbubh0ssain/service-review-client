@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 const ServiceCard = ({ service }) => {
-  const { name, img, price, description, _id } = service;
+  const { title, img, price, description, _id } = service;
   return (
     <Col>
       <Card className="h-100">
@@ -16,7 +16,7 @@ const ServiceCard = ({ service }) => {
           </PhotoView>
         </PhotoProvider>
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title>{title}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
           <Card.Text>
             {description?.length > 100

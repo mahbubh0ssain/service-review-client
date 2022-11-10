@@ -7,7 +7,8 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
 const HomeCard = ({ service }) => {
-  const { name, img, price, description, _id } = service;
+  const { title, img, price, description, _id } = service;
+  console.log(service);
   return (
     <Col>
       <Card>
@@ -16,9 +17,8 @@ const HomeCard = ({ service }) => {
             <img style={{ height: "250px" }} src={img} alt="" />
           </PhotoView>
         </PhotoProvider>
-        {/* <Card.Img style={{ height: "250px" }} variant="top" src={img} /> */}
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title>P{title}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
           <Card.Text>
             {description.length > 100
