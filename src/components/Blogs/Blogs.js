@@ -5,7 +5,7 @@ import Accordion from "react-bootstrap/Accordion";
 const Blogs = () => {
   useTitle("Blogs");
   return (
-    <div className="container my-5">
+    <div style={{ minHeight: "59vh" }} className="container my-5">
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Difference between SQL and NoSQL</Accordion.Header>

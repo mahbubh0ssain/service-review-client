@@ -34,7 +34,7 @@ const MyReviews = () => {
   }
 
   return (
-    <div style={{ "min-height": "26vh" }} className="container my-5">
+    <div style={{ minHeight: "59vh" }} className="container my-5">
       {reviews.length ? (
         <>
           <h4 className="text-center mb-3">My Reviews</h4>
