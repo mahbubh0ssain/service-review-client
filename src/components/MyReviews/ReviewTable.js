@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
 const ReviewTable = ({ review }) => {
-  const { serviceName, reviewTxt, _id } = review;
+  const { serviceName, currentDate, reviewTxt, _id } = review;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
@@ -106,7 +106,8 @@ const ReviewTable = ({ review }) => {
         </Modal.Body>
       </Modal>
       <tr>
-        <td className="fw-bold">{serviceName}</td>
+        <td>{serviceName}</td>
+        <td>{currentDate}</td>
         <td>
           {reviewTxt.length > 80 ? reviewTxt.slice(0, 80) + "..." : reviewTxt}
         </td>

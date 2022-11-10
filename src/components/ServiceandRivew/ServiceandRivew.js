@@ -10,7 +10,9 @@ const ServiceandRivew = () => {
   useTitle("Services");
   const { data } = useLoaderData();
   const navigate = useNavigate();
-  const { name, img, price, description, _id } = data;
+
+  const { title, img, price, description, _id } = data;
+
   return (
     <div className="container my-5">
       <Card>
@@ -21,7 +23,7 @@ const ServiceandRivew = () => {
           src={img}
         />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title>{title}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
           <Card.Text>{description}</Card.Text>
           <Button onClick={() => navigate(-1)} variant="primary">
@@ -30,7 +32,7 @@ const ServiceandRivew = () => {
         </Card.Body>
       </Card>
       <div>
-        <ReviewForm name={name} _id={_id}></ReviewForm>
+        <ReviewForm title={title} _id={_id}></ReviewForm>
         <Reviews _id={_id}></Reviews>
       </div>
     </div>

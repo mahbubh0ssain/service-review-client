@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
-const ReviewForm = ({ name, _id }) => {
+const ReviewForm = ({ title, _id }) => {
   const { user } = useContext(AuthContext);
   const [currentDate, setCurrentDate] = useState("");
 
@@ -16,7 +16,7 @@ const ReviewForm = ({ name, _id }) => {
     const userImg = user?.photoURL;
     const userEmail = user?.email;
     const serviceId = _id;
-    const serviceName = name;
+    const serviceName = title;
     const review = {
       reviewTxt,
       userName,
@@ -81,13 +81,13 @@ const ReviewForm = ({ name, _id }) => {
     <>
       {user ? (
         <Form
-          style={{ "max-width": "768px" }}
+          style={{ maxWidth: "768px" }}
           onSubmit={handleSubmit}
           className="p-4 my-4 mx-auto bg-light rounded"
         >
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>
-              <h4>Add a review for {name} </h4>
+              <h4>Add a review for {title} </h4>
             </Form.Label>
             <Form.Control
               name="review"

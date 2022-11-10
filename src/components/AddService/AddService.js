@@ -47,13 +47,12 @@ const AddService = () => {
     <div>
       <div
         className="bg-light container rounded-3 p-4 my-5"
-        style={{ "max-width": "768px" }}
+        style={{ maxWidth: "768px" }}
       >
         <h3 className="text-center  text-dark">Add a service</h3>
 
         <div>
           <Form onSubmit={handleSubmit}>
-            
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="text-dark">Service Title</Form.Label>
               <Form.Control

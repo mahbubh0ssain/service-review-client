@@ -26,9 +26,7 @@ const ReviewCard = ({ review }) => {
           </div>
         </Card.Header>
         <Card.Body>
-          <Card.Text>
-            <p> {reviewTxt}</p>
-          </Card.Text>
+          <Card.Text>{reviewTxt}</Card.Text>
         </Card.Body>
       </Card>
     </div>

@@ -17,7 +17,7 @@ const HomeCard = ({ service }) => {
           </PhotoView>
         </PhotoProvider>
         <Card.Body>
-          <Card.Title>P{title}</Card.Title>
+          <Card.Title>{title}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
           <Card.Text>
             {description.length > 100

@@ -42,6 +42,7 @@ const MyReviews = () => {
             <thead>
               <tr>
                 <th>Service name</th>
+                <th>Added at</th>
                 <th>Review</th>
                 <th>Actions</th>
               </tr>
