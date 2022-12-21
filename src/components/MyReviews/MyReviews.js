@@ -34,8 +34,8 @@ const MyReviews = () => {
   }
 
   return (
-    <div style={{ minHeight: "59vh" }} className="container my-5">
-      {reviews.length ? (
+    <div style={{ minHeight: "74vh" }} className="container my-5">
+      {reviews?.length ? (
         <>
           <h4 className="text-center mb-3">My Reviews</h4>
           <Table striped bordered hover>

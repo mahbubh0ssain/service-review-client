@@ -44,9 +44,12 @@ const AddService = () => {
   };
 
   return (
-    <div>
+    <div
+      className="d-flex justify-content-center align-items-center"
+      style={{ minHeight: "84vh" }}
+    >
       <div
-        className="bg-light container rounded-3 p-4 my-5"
+        className="bg-light container shadow rounded-3 p-4 my-5"
         style={{ maxWidth: "768px" }}
       >
         <h3 className="text-center  text-dark">Add a service</h3>
@@ -96,7 +99,7 @@ const AddService = () => {
                 placeholder="Service description..."
               />
             </Form.Group>
-            <Button type="submit" variant="primary">
+            <Button type="submit" className="w-100 fw-bold" variant="primary">
               Add
             </Button>
           </Form>

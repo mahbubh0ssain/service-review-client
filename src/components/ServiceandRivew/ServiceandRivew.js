@@ -26,8 +26,16 @@ const ServiceandRivew = () => {
           <Card.Title>{title}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
           <Card.Text>{description}</Card.Text>
-          <Button onClick={() => navigate(-1)} variant="primary">
-            Back
+          <Button
+            className="w-25"
+            onClick={() => navigate(-1)}
+            variant="primary"
+          >
+            <img
+              className="img-fluid w-25 mr-3"
+              src="https://i.ibb.co/wsFVX8C/left-arrow.png"
+              alt=""
+            />
           </Button>
         </Card.Body>
       </Card>
