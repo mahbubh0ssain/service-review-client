@@ -5,10 +5,14 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useTitle } from "../../Hooks/UseTitle/UseTitle";
+import { useState } from "react";
 
 const Login = () => {
   useTitle("Login");
   const { loginUser, googleLogIn, githubLogin } = useContext(AuthContext);
+
+  const [checked, setChecked] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -111,31 +115,51 @@ const Login = () => {
       });
   };
 
+  const isChecked = (e) => {
+    setChecked(e.target.checked);
+  };
+
   return (
     <div style={{ minHeight: "77vh" }}>
       <div
         className="container p-5 shadow my-5 rounded-4"
-        style={{ "max-width": "560px" }}
+        style={{ maxWidth: "560px" }}
       >
         <h4 className="text-center">Log in now</h4>
         <Form onSubmit={handleSubmit} className="container ">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control name="email" type="email" placeholder="Enter email" />
+            <Form.Control
+              required
+              name="email"
+              type="email"
+              placeholder="Enter email"
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
+              required
               name="password"
               type="password"
               placeholder="Password"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
+            <Form.Check
+              required
+              type="checkbox"
+              onClick={isChecked}
+              label="Check me out"
+            />
           </Form.Group>
-          <Button className="w-100" variant="primary" type="submit">
+          <Button
+            disabled={!checked}
+            className="w-100"
+            variant="primary"
+            type="submit"
+          >
             Login
           </Button>
         </Form>
