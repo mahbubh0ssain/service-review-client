@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 const GetInTouch = () => {
   return (
     <div className="shadow rounded-3 p-4">
-      <h3 className="text-center  text-white">Get in touch</h3>
+      <h3 className="text-center  text-primary">Get in touch</h3>
       <div className="row row-cols-1 row-cols-md-2">
         <div className=" d-flex justify-content-center align-items-center">
           <img
