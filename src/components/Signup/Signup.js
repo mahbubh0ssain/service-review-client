@@ -39,8 +39,7 @@ const Signup = () => {
               localStorage.setItem("token", data?.token);
             }
           });
-
-        if (res.user.uid) {
+        if (res?.user?.uid) {
           const photoURL = res.user.photoURL;
           const profile = { displayName, photoURL };
           profileUpdate(profile)
@@ -65,16 +64,16 @@ const Signup = () => {
   const loginGoogle = () => {
     googleLogIn()
       .then((res) => {
-        const email = res.user.email;
-        fetch("https://mr-plumber-server.vercel.app/jwt", {
-          method: "POST",
+        const email = res?.user?.email;
+        fetch(`${process.env.REACT_APP_URL}/saveUser/${email}`, {
+          method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.success) {
-              localStorage.setItem("token", data.data);
+            if (data?.result?.acknowledged) {
+              localStorage.setItem("token", data?.token);
             }
           });
         if (res.user.uid) {
@@ -95,16 +94,16 @@ const Signup = () => {
   const loginGithub = () => {
     githubLogin()
       .then((res) => {
-        const email = res.user.email;
-        fetch("https://mr-plumber-server.vercel.app/jwt", {
-          method: "POST",
+        const email = res?.user?.email;
+        fetch(`${process.env.REACT_APP_URL}/saveUser/${email}`, {
+          method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.success) {
-              localStorage.setItem("token", data.data);
+            if (data?.result?.acknowledged) {
+              localStorage.setItem("token", data?.token);
             }
           });
         if (res.user.uid) {

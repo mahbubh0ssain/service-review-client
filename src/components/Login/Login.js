@@ -25,15 +25,15 @@ const Login = () => {
     loginUser(email, password)
       .then((res) => {
         const email = res.user.email;
-        fetch("https://mr-plumber-server.vercel.app/jwt", {
-          method: "POST",
+        fetch(`${process.env.REACT_APP_URL}/saveUser/${email}`, {
+          method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.success) {
-              localStorage.setItem("token", data.data);
+            if (data?.result?.acknowledged) {
+              localStorage.setItem("token", data?.token);
             }
           });
         if (res?.user?.uid) {
@@ -56,19 +56,18 @@ const Login = () => {
   const loginGoogle = () => {
     googleLogIn()
       .then((res) => {
-        const email = res.user.email;
-        fetch("https://mr-plumber-server.vercel.app/jwt", {
-          method: "POST",
+        const email = res?.user?.email;
+        fetch(`${process.env.REACT_APP_URL}/saveUser/${email}`, {
+          method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.success) {
-              localStorage.setItem("token", data.data);
+            if (data?.result?.acknowledged) {
+              localStorage.setItem("token", data?.token);
             }
           });
-
         if (res.user.uid) {
           Swal.fire({
             icon: "success",
@@ -88,16 +87,16 @@ const Login = () => {
   const loginGithub = () => {
     githubLogin()
       .then((res) => {
-        const email = res.user.email;
-        fetch("https://mr-plumber-server.vercel.app/jwt", {
-          method: "POST",
+        const email = res?.user?.email;
+        fetch(`${process.env.REACT_APP_URL}/saveUser/${email}`, {
+          method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.success) {
-              localStorage.setItem("token", data.data);
+            if (data?.result?.acknowledged) {
+              localStorage.setItem("token", data?.token);
             }
           });
         if (res.user.uid) {
