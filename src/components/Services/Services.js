@@ -16,13 +16,13 @@ const Services = () => {
 
   if (services.length === 0) {
     return (
-      <div className=" container my-5 d-flex align-items-center justify-content-center">
+      <div className="container my-5 d-flex align-items-center justify-content-center min-vh-100">
         <RingLoader color="#36d7b7" speedMultiplier={2} />
       </div>
     );
   }
   return (
-    <div className="my-5 container">
+    <div className="my-5 container min-vh-100">
       <Row sm={1} md={2} lg={3} className="g-4 mt-4">
         {services?.map((service) => (
           <ServiceCard key={service._id} service={service}></ServiceCard>

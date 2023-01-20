@@ -19,12 +19,12 @@ const ServiceCard = ({ service }) => {
           <Card.Title>{title}</Card.Title>
           <Card.Title>Price: ${price}</Card.Title>
           <Card.Text>
-            {description?.length > 100
-              ? description.slice(0, 100) + " ..."
+            {description?.length > 95
+              ? description.slice(0, 95) + " ..."
               : description}
           </Card.Text>
           <Link to={`/services/${_id}`}>
-            <Button variant="primary">View details</Button>
+            <Button variant="primary">Details</Button>
           </Link>
         </Card.Body>
       </Card>
