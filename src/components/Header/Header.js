@@ -31,9 +31,6 @@ const Header = () => {
             <Link className="me-3 text-decoration-none text-black" to="/">
               Home
             </Link>
-            <Link className="me-3 text-decoration-none text-black" to="/blogs">
-              Blogs
-            </Link>
             {user?.email ? (
               <>
                 <Link

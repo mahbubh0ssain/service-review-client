@@ -74,6 +74,7 @@ const Login = () => {
             icon: "success",
             title: "Signup successful.",
           });
+          navigate(from, { replace: true });
         }
       })
       .catch((err) => {
