@@ -122,88 +122,93 @@ const Signup = () => {
       });
   };
 
-  
   return (
-    <div
-      className="container p-5 shadow my-5 rounded-4"
-      style={{ "max-width": "560px" }}
-    >
-      <h4 className="text-center">Sign up now</h4>
-      <Form onSubmit={handleSubmit} className="container ">
-        <Form.Group className="mb-3">
-          <Form.Label>Your name</Form.Label>
-          <Form.Control name="name" type="text" placeholder="Enter your name" />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control name="email" type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            name="password"
-            type="password"
-            placeholder="Password"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Check
-            onClick={handleCheck}
-            type="checkbox"
-            label="Check me out"
-          />
-        </Form.Group>
-        <Button
-          disabled={!btnChecked}
-          className="w-100"
-          variant="primary"
-          type="submit"
-        >
-          Submit
-        </Button>
-      </Form>
-
-      <p className="text-center my-2">
-        Already have an account?
-        <Link to="/login" className=" fw-bold ms-2">
-          Login
-        </Link>
-      </p>
-      <div className="mt-3 row row-cols-1 row-cols-md-1 row-cols-lg-2 mx-auto ">
-        <div className=" mb-3">
-          <Button
-            onClick={loginGoogle}
-            className="w-100"
-            variant="outline-primary"
-          >
-            <img
-              className="img-fluid me-2 "
-              style={{ height: "30px", width: "30px" }}
-              src="https://i.ibb.co/nCkjPRN/google.png"
-              alt="..."
+    <div className="min-vh-100 justify-content-center align-items-center d-flex">
+      <div
+        className="container p-5 shadow my-5 rounded-4"
+        style={{ "max-width": "560px" }}
+      >
+        <h4 className="text-center">Sign up now</h4>
+        <Form onSubmit={handleSubmit} className="container ">
+          <Form.Group className="mb-3">
+            <Form.Label>Your name</Form.Label>
+            <Form.Control
+              name="name"
+              type="text"
+              placeholder="Enter your name"
             />
-            Sign in with Goggle
-          </Button>
-        </div>
-        <div className=" mb-3">
-          <Button
-            onClick={loginGithub}
-            className="w-100"
-            variant="outline-secondary"
-          >
-            <img
-              className="img-fluid me-2"
-              style={{ height: "30px", width: "30px" }}
-              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-              alt="..."
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control name="email" type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              name="password"
+              type="password"
+              placeholder="Password"
             />
-            Sign in with Github
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Check
+              onClick={handleCheck}
+              type="checkbox"
+              label="Check me out"
+            />
+          </Form.Group>
+          <Button
+            disabled={!btnChecked}
+            className="w-100"
+            variant="primary"
+            type="submit"
+          >
+            Submit
           </Button>
+        </Form>
+
+        <p className="text-center my-2">
+          Already have an account?
+          <Link to="/login" className=" fw-bold ms-2">
+            Login
+          </Link>
+        </p>
+        <div className="mt-3 row row-cols-1 row-cols-md-1 row-cols-lg-2 mx-auto ">
+          <div className=" mb-3">
+            <Button
+              onClick={loginGoogle}
+              className="w-100"
+              variant="outline-primary"
+            >
+              <img
+                className="img-fluid me-2 "
+                style={{ height: "30px", width: "30px" }}
+                src="https://i.ibb.co/nCkjPRN/google.png"
+                alt="..."
+              />
+              Sign in with Goggle
+            </Button>
+          </div>
+          <div className=" mb-3">
+            <Button
+              onClick={loginGithub}
+              className="w-100"
+              variant="outline-secondary"
+            >
+              <img
+                className="img-fluid me-2"
+                style={{ height: "30px", width: "30px" }}
+                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                alt="..."
+              />
+              Sign in with Github
+            </Button>
+          </div>
         </div>
       </div>
     </div>

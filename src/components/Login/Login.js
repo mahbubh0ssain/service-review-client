@@ -121,7 +121,10 @@ const Login = () => {
   };
 
   return (
-    <div style={{ minHeight: "77vh" }}>
+    <div
+      className="min-vh-100 justify-content-center align-items-center d-flex"
+      style={{ minHeight: "77vh" }}
+    >
       <div
         className="container p-5 shadow my-5 rounded-4"
         style={{ maxWidth: "560px" }}
