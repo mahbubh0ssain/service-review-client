@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useRole } from "../../Hooks/getRole";
 
 const Header = () => {
   const { user, userSignOut } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const Header = () => {
       .catch(() => {});
   };
 
+  const role = useRole(user?.email);
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -44,7 +46,7 @@ const Header = () => {
                 >
                   My reviews
                 </Link>
-                {user?.email === "hasanmahbub453@gmail.com" && (
+                {role && (
                   <Link
                     className="me-3 text-decoration-none text-black"
                     to="/add-service"

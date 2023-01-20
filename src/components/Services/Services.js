@@ -9,7 +9,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("https://mr-plumber-server.vercel.app/all-service")
+    fetch(`${process.env?.REACT_APP_URL}/all-service`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data.data);

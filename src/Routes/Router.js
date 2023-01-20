@@ -27,9 +27,7 @@ export const router = createBrowserRouter([
       {
         path: "/services/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://mr-plumber-server.vercel.app/all-service/${params.id}`
-          ),
+          fetch(`${process.env.REACT_APP_URL}/all-service/${params.id}`),
         element: <ServiceandRivew></ServiceandRivew>,
       },
       {
@@ -49,7 +47,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/my-review",
+        path: "/my-review",        
         element: (
           <PrivateRouter>
             <MyReviews></MyReviews>
