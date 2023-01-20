@@ -26,16 +26,17 @@ const Signup = () => {
     const password = form.password.value;
     signUpUser(email, password)
       .then((res) => {
-        const email = res.user.email;
-        fetch("https://mr-plumber-server.vercel.app/jwt", {
-          method: "POST",
+        const email = res?.user?.email;
+        fetch(`${process.env.REACT_APP_URL}/saveUser/${email}`, {
+          method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ email }),
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.success) {
-              localStorage.setItem("token", data.data);
+            console.log(data?.result, data?.token);
+            if (data?.result?.acknowledged) {
+              localStorage.setItem("token", data?.token);
             }
           });
 
@@ -126,7 +127,7 @@ const Signup = () => {
     <div className="min-vh-100 justify-content-center align-items-center d-flex">
       <div
         className="container p-5 shadow my-5 rounded-4"
-        style={{ "max-width": "560px" }}
+        style={{ maxWidth: "560px" }}
       >
         <h1 className="text-center">Sign up</h1>
         <Form onSubmit={handleSubmit} className="container ">

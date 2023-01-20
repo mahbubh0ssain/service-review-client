@@ -9,8 +9,13 @@ const Header = () => {
   const { user, userSignOut } = useContext(AuthContext);
 
   const signOutUser = () => {
-    userSignOut();
+    userSignOut()
+      .then(() => {
+        localStorage.removeItem("token");
+      })
+      .catch(() => {});
   };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -39,12 +44,14 @@ const Header = () => {
                 >
                   My reviews
                 </Link>
-                <Link
-                  className="me-3 text-decoration-none text-black"
-                  to="/add-service"
-                >
-                  Add Service
-                </Link>
+                {user?.email === "hasanmahbub453@gmail.com" && (
+                  <Link
+                    className="me-3 text-decoration-none text-black"
+                    to="/add-service"
+                  >
+                    Add Service
+                  </Link>
+                )}
 
                 <img
                   className="img-fluid me-3 rounded-circle"

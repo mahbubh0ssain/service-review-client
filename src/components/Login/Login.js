@@ -36,7 +36,7 @@ const Login = () => {
               localStorage.setItem("token", data.data);
             }
           });
-        if (res.user.uid) {
+        if (res?.user?.uid) {
           Swal.fire({
             icon: "success",
             title: "Signup successful.",
