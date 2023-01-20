@@ -7,6 +7,7 @@ import RingLoader from "react-spinners/RingLoader";
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
+  console.log(reviews);
   const [refresh, setRefresh] = useState(true);
   useEffect(() => {
     fetch(
@@ -17,11 +18,11 @@ const MyReviews = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) {
-          setReviews(data.data);
+        if (data?.data?.length) {
+          setReviews(data?.data);
           setRefresh(!refresh);
         } else {
-          console.log("Reviews not found");
+          console.log("No reviews found");
         }
       });
   }, [user?.email, refresh]);
@@ -30,7 +31,6 @@ const MyReviews = () => {
     <div className=" container my-5 d-flex align-items-center justify-content-center">
       <RingLoader color="#36d7b7" speedMultiplier={2} />
     </div>;
-  } else {
   }
 
   return (
@@ -38,18 +38,23 @@ const MyReviews = () => {
       {reviews?.length ? (
         <>
           <h4 className="text-center mb-3">My Reviews</h4>
-          <Table striped bordered hover>
+          <Table bordered>
             <thead>
               <tr>
                 <th>Service name</th>
                 <th>Added at</th>
                 <th>Review</th>
-                <th>Actions</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {reviews.map((review) => (
-                <ReviewTable key={review._id} review={review}></ReviewTable>
+                <ReviewTable
+                  key={review._id}
+                  review={review}
+                  refresh={refresh}
+                  setRefresh={setRefresh}
+                ></ReviewTable>
               ))}
             </tbody>
           </Table>
@@ -57,7 +62,7 @@ const MyReviews = () => {
       ) : (
         <>
           <h3 className="mb-0 d-flex align-items-center justify-content-center">
-            No reviews were added yet.
+            No review
           </h3>
         </>
       )}

@@ -10,7 +10,6 @@ const ServiceandRivew = () => {
   useTitle("Services");
   const { data } = useLoaderData();
   const navigate = useNavigate();
-
   const { title, img, price, description, _id } = data;
 
   return (

@@ -128,11 +128,12 @@ const Signup = () => {
         className="container p-5 shadow my-5 rounded-4"
         style={{ "max-width": "560px" }}
       >
-        <h4 className="text-center">Sign up now</h4>
+        <h1 className="text-center">Sign up</h1>
         <Form onSubmit={handleSubmit} className="container ">
           <Form.Group className="mb-3">
             <Form.Label>Your name</Form.Label>
             <Form.Control
+              required
               name="name"
               type="text"
               placeholder="Enter your name"
@@ -141,7 +142,12 @@ const Signup = () => {
 
           <Form.Group className="mb-3">
             <Form.Label>Email address</Form.Label>
-            <Form.Control name="email" type="email" placeholder="Enter email" />
+            <Form.Control
+              required
+              name="email"
+              type="email"
+              placeholder="Enter email"
+            />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -150,6 +156,7 @@ const Signup = () => {
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
             <Form.Control
+              required
               name="password"
               type="password"
               placeholder="Password"

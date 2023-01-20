@@ -129,7 +129,7 @@ const Login = () => {
         className="container p-5 shadow my-5 rounded-4"
         style={{ maxWidth: "560px" }}
       >
-        <h4 className="text-center">Log in now</h4>
+        <h1 className="text-center">Log in</h1>
         <Form onSubmit={handleSubmit} className="container ">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>

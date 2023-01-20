@@ -11,10 +11,12 @@ const Services = () => {
   useEffect(() => {
     fetch("https://mr-plumber-server.vercel.app/all-service")
       .then((res) => res.json())
-      .then((data) => setServices(data.data));
+      .then((data) => {
+        setServices(data.data);
+      });
   }, []);
 
-  if (services.length === 0) {
+  if (services?.length === 0) {
     return (
       <div className="container my-5 d-flex align-items-center justify-content-center min-vh-100">
         <RingLoader color="#36d7b7" speedMultiplier={2} />

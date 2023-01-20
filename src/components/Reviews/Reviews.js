@@ -9,7 +9,7 @@ const Reviews = ({ _id }) => {
     fetch(`https://mr-plumber-server.vercel.app/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) {
+        if (data?.success) {
           setReviews(data.data);
           setRefresh(!refresh);
         } else {
@@ -20,8 +20,8 @@ const Reviews = ({ _id }) => {
 
   return (
     <>
-      {reviews.map((review) => (
-        <ReviewCard key={review._id} review={review}></ReviewCard>
+      {reviews?.map((review) => (
+        <ReviewCard key={review?._id} review={review}></ReviewCard>
       ))}
     </>
   );

@@ -12,7 +12,9 @@ const Home = () => {
   useEffect(() => {
     fetch("https://mr-plumber-server.vercel.app/service")
       .then((res) => res.json())
-      .then((data) => setServices(data.data));
+      .then((data) => {
+        setServices(data.data);
+      });
   }, []);
 
   return (

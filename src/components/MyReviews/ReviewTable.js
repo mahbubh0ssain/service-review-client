@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const ReviewTable = ({ review }) => {
+const ReviewTable = ({ review, refresh, setRefresh }) => {
   const { serviceName, currentDate, reviewTxt, _id } = review;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -19,12 +19,13 @@ const ReviewTable = ({ review }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.data.acknowledged) {
+        if (data?.data?.acknowledged) {
           Swal.fire({
             icon: "success",
             title: "Successfully updated.",
           });
           setShow(false);
+          setRefresh(!refresh);
         } else {
           Swal.fire({
             icon: "error",
@@ -59,12 +60,13 @@ const ReviewTable = ({ review }) => {
           })
             .then((res) => res.json())
             .then((data) => {
-              if (data.data.acknowledged) {
+              if (data?.data?.acknowledged) {
                 swalWithBootstrapButtons.fire(
                   "Deleted!",
                   "Review has been deleted.",
                   "success"
                 );
+                setRefresh(!refresh);
               } else {
                 console.log(data);
               }
@@ -91,7 +93,7 @@ const ReviewTable = ({ review }) => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>
-                <h5>Update your review</h5>
+                <h5>Update review</h5>
               </Form.Label>
               <Form.Control
                 name="review"
@@ -109,7 +111,7 @@ const ReviewTable = ({ review }) => {
         <td>{serviceName}</td>
         <td>{currentDate}</td>
         <td>
-          {reviewTxt.length > 80 ? reviewTxt.slice(0, 80) + "..." : reviewTxt}
+          {reviewTxt.length > 80 ? reviewTxt.slice(0, 50) + "..." : reviewTxt}
         </td>
         <td className="d-flex justify-content-center px-3 align-items-center">
           <Button
